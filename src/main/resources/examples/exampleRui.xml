@@ -1,0 +1,10 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dat="http://www.prestigecentral.com/DataExtraction">
+
+<tsRequest>
+  <credentials
+        personalAccessTokenName="t"
+        personalAccessTokenSecret="+hc1TSW5TcWfdIgcb78LiQ==:bJrAlU6pY2ZPXkAWp73ljhhJAAnigszI" >
+    <site contentUrl="imfsmarteducationtableau" />
+  </credentials>
+</tsRequest>
+</soapenv:Envelope>

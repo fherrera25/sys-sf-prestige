@@ -1,0 +1,3048 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.prestigecentral.com/DataExtraction" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://www.prestigecentral.com/DataExtraction" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.prestigecentral.com/DataExtraction">
+      <s:element name="GetReservation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IDReserva" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IDHotel" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="TipoFiltro" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Desde" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="Hasta" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetReservationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetReservationResult" type="tns:ArrayOfGetReservationResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGetReservationResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GetReservationResponse" nillable="true" type="tns:GetReservationResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GetReservationResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ID_RESERVA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LLEGADA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SALIDA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NOCHES" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_REG" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="REGIMEN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_TIPO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TIPO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="USO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PAX" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NENES" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BEBES" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GRATIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_AGENCIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AGENCIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_EMPRESA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EMPRESA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_MASTER" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MASTER" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_CRS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CRS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_HISTORICO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_STATUS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="STATUS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_MOTIVO_ANULACION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MOTIVO_ANULACION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_HABITACION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HABITACION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_CARDEX" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_TARIFA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_CONTRATO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_PAQUETE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TARIFA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_TIPO_FACTURA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TIPO_FACTURA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_MOTIVO_PROVISIONAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MOTIVO_PROVISIONAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SUPLETORIAS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CUNAS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_GDS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GDS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_TTOO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TTOO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_MONEDA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MONEDA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="APELLIDO1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="APELLIDO2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NOMBRE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NUMDOC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BONO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ALLINCLUSIVE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_SERVICIO1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SERVICIO1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_SERVICIO2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SERVICIO2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_SEGMENTO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SEGMENTO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_CONDICION_PAGO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CONDICION_PAGO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LOCALIZADOR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DEADLINE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_SOB" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SOB" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_USUARIO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="USUARIO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FECHA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FECHA_ULTIMA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_HABITACION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_HABITACION_BR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_PENSION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_PENSION_BR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_EXTRAS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_EXTRAS_BR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_TOTAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_TOTAL_BR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ONLINE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EMAIL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ISO_PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CODIGO_ERROR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESCRIPCION_ERROR" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetReservationItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IDReserva" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IDHotel" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="TipoFiltro" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Desde" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="Hasta" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetReservationItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetReservationItemResult" type="tns:ArrayOfGetReservationItemResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGetReservationItemResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GetReservationItemResponse" nillable="true" type="tns:GetReservationItemResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GetReservationItemResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ID_RESERVA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FECHA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_REG" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="REGIMEN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="USO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PAX" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NENES" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GRATIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BEBES" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_HABITACION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_HABITACION_BR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_PENSION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_PENSION_BR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_EXTRAS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_EXTRAS_BR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_TOTAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_TOTAL_BR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CODIGO_ERROR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESCRIPCION_ERROR" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetReservationItemPrev">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IDHotel" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Fecha" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetReservationItemPrevResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetReservationItemPrevResult" type="tns:ArrayOfGetReservationItemPrevResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGetReservationItemPrevResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GetReservationItemPrevResponse" nillable="true" type="tns:GetReservationItemPrevResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GetReservationItemPrevResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ID_RESERVA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FECHA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_REG" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="REGIMEN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="USO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PAX" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NENES" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GRATIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BEBES" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_HABITACION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_HABITACION_BR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_PENSION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_PENSION_BR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_EXTRAS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_EXTRAS_BR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_TOTAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_TOTAL_BR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CODIGO_ERROR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESCRIPCION_ERROR" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetGroup">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IDReserva" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IDHotel" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Desde" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="Hasta" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGroupResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGroupResult" type="tns:ArrayOfGetGroupResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGetGroupResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GetGroupResponse" nillable="true" type="tns:GetGroupResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GetGroupResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NOMBRE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ES_MASTER" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LLEGADA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SALIDA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NOCHES" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_REG" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="REGIMEN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_AGENCIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AGENCIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_EMPRESA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EMPRESA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_STATUS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="STATUS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_MOTIVO_ANULACION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MOTIVO_ANULACION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_TARIFA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_CONTRATO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_PAQUETE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TARIFA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HORA_LLEGADA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HORA_SALIDA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HORA_LIMITE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LOCALIZADOR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CONFIRMADA_POR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VUELO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OBSERVACIONES" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DEADLINE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_USUARIO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="USUARIO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FECHA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="INACTIVO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_FIJO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_MOTIVO_PROVISIONAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MOTIVO_PROVISIONAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="COMISION_TARIFAS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="COMISION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_APLICADA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="APLICADA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESCUENTO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_APLICADO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="APLICADO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="INVITADO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="USODIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ALLINCLUSIVE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_SEGMENTO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SEGMENTO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_CONDICION_PAGO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CONDICION_PAGO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CONTACTO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PREPAGO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FACPREPAGO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LIMITEPREPAGO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ENTREGAPREPAGO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_SOB" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SOB" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_HOTEL_CLIENTE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HOTEL_CLIENTE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TOMADA_HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_GDS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GDS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_TTOO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TTOO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_CRS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CRS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ENVIADA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FECHA_ULTIMA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TIME" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_MONEDA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MONEDA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BONO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EMAIL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TELEFONO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FAX" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BEBIDAS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_HABITACION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_HABITACIONBR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_PENSION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_PENSIONBR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_EXTRAS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_EXTRASBR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_TOTAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_TOTALBR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ISO_PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CODIGO_ERROR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESCRIPCION_ERROR" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCardex">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IDCardex" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IDHotel" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="TipoFiltro" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Desde" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="Hasta" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCardexResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCardexResult" type="tns:ArrayOfGetCardexResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGetCardexResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GetCardexResponse" nillable="true" type="tns:GetCardexResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GetCardexResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ID_CARDEX" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LLEGADA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SALIDA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NOCHES" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_REG" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="REGIMEN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_TIPO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TIPO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="USO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PAX" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NENES" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BEBES" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GRATIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_AGENCIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AGENCIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_EMPRESA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EMPRESA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_MASTER" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MASTER" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_CRS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CRS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_HISTORICO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_HABITACION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HABITACION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_RESERVA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_TARIFA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_CONTRATO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_PAQUETE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TARIFA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_TIPO_FACTURA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TIPO_FACTURA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SUPLETORIAS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CUNAS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_MONEDA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MONEDA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="APELLIDO1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="APELLIDO2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NOMBRE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TIPODOC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NOMBRE_DOC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NUMDOC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BONO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ALLINCLUSIVE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_SEGMENTO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SEGMENTO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_CONDICION_PAGO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CONDICION_PAGO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LOCALIZADOR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_SOB" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SOB" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_HABITACION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_HABITACION_BR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_PENSION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_PENSION_BR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_EXTRAS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_EXTRAS_BR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_TOTAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_TOTAL_BR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EMAIL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ISO_PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CODIGO_ERROR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESCRIPCION_ERROR" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCardexItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IDCardex" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IDHotel" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="TipoFiltro" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Desde" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="Hasta" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCardexItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCardexItemResult" type="tns:ArrayOfGetCardexItemResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGetCardexItemResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GetCardexItemResponse" nillable="true" type="tns:GetCardexItemResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GetCardexItemResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ID_CARDEX" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FECHA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_REG" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="REGIMEN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="USO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PAX" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NENES" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GRATIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BEBES" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_HABITACION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_HABITACION_BR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_PENSION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_PENSION_BR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_EXTRAS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_EXTRAS_BR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_TOTAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_TOTAL_BR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CODIGO_ERROR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESCRIPCION_ERROR" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCardexPax">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IDCardex" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IDHotel" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="TipoFiltro" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Desde" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="Hasta" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCardexPaxResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCardexPaxResult" type="tns:ArrayOfGetCardexPaxResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGetCardexPaxResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GetCardexPaxResponse" nillable="true" type="tns:GetCardexPaxResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GetCardexPaxResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ID_CARDEX" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_OCUPANTE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_PERFIL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PERFIL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_HUESPED" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EMAIL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CODIGO_ERROR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESCRIPCION_ERROR" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetInvoice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IDFactura" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IDHotel" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Desde" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="Hasta" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInvoiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetInvoiceResult" type="tns:ArrayOfGetInvoiceResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGetInvoiceResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GetInvoiceResponse" nillable="true" type="tns:GetInvoiceResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GetInvoiceResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ID_FACTURA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FECHA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NUMERO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SERIE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TOTAL_FACTURA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CONTADO_DIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_AGENCIA_FAC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_EMPRESA_FAC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_FORANEO_FAC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_REPRE_FAC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_PART_FAC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_MONEDA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MONEDA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="APELLIDO1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="APELLIDO2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NOMBRE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CIF" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_IMPUESTO1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPUESTO1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PORCENTAJE1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_IMPUESTO2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPUESTO2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PORCENTAJE2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_IMPUESTO3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPUESTO3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PORCENTAJE3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SIMBOLO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ELECTRONICA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_CARDEX" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ISO_PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NUMERO_TICKETI" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NUMERO_TICKETF" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_FACTURA_ORIGEN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FACTURA_ORIGEN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SERIE_ORIGEN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_MOTIVO_ABONO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MOTIVO_ABONO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CODIGO_ERROR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESCRIPCION_ERROR" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetInvoiceItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IDFactura" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IDHotel" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Desde" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="Hasta" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInvoiceItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetInvoiceItemResult" type="tns:ArrayOfGetInvoiceItemResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGetInvoiceItemResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GetInvoiceItemResponse" nillable="true" type="tns:GetInvoiceItemResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GetInvoiceItemResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ID_FACTURA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_SERVICIO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SERVICIO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_CARDEX" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FECHA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_BR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESCUENTO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESCUENTO_BR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="COMISION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="COMISION_BR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="COMISION_DIRECTA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="COMISION_DIRECTA_BR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CODIGO_ERROR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESCRIPCION_ERROR" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetInvoiceTax">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IDFactura" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IDHotel" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Desde" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="Hasta" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInvoiceTaxResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetInvoiceTaxResult" type="tns:ArrayOfGetInvoiceTaxResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGetInvoiceTaxResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GetInvoiceTaxResponse" nillable="true" type="tns:GetInvoiceTaxResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GetInvoiceTaxResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ID_FACTURA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_IMPUESTO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPUESTO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BASE_IMPONIBLE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PORCENTAJE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_IMPUESTO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CODIGO_ERROR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESCRIPCION_ERROR" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetInvoicePayment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IDFactura" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IDHotel" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Desde" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="Hasta" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInvoicePaymentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetInvoicePaymentResult" type="tns:ArrayOfGetInvoicePaymentResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGetInvoicePaymentResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GetInvoicePaymentResponse" nillable="true" type="tns:GetInvoicePaymentResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GetInvoicePaymentResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ID_COBRO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FECHA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_FACTURA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_CARDEX" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_CAJA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_DEPOSITO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NUMERO_DEPOSITO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_PAGO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="REFERENCIA_PAGO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_MONEDA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MONEDA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CODIGO_ERROR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESCRIPCION_ERROR" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCash">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IDCaja" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IDHotel" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Desde" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="Hasta" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCashResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCashResult" type="tns:ArrayOfGetCashResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGetCashResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GetCashResponse" nillable="true" type="tns:GetCashResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GetCashResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ID_CAJA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FECHA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_FACTURA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NUMERO_FACTURA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_DEPOSITO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NUMERO_DEPOSITO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_MOTIVO_PAGO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MOTIVO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_COBRO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_PAGO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_CREDITO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_FORMA_PAGO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FORMA_PAGO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_PAGO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="REFERENCIA_PAGO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TIPO_CAJA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_MONEDA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MONEDA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CODIGO_ERROR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESCRIPCION_ERROR" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetDeposit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IDDeposito" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IDFactura" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IDHotel" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Desde" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="Hasta" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDepositResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDepositResult" type="tns:ArrayOfGetDepositResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGetDepositResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GetDepositResponse" nillable="true" type="tns:GetDepositResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GetDepositResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ID_DEPOSITO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FECHA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_CARDEX" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CARDEX" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_RESERVA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RESERVA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_FORANEO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FORANEO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_GRUPO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GRUPO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_AGENCIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AGENCIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_EMPRESA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EMPRESA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FACTURA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_MOTIVO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MOTIVO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_FORMA_PAGO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FORMA_PAGO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_FACTURA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NUMERO_FACTURA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CANCELADO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_MONEDA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MONEDA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NUMERO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SERIE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CODIGO_ERROR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESCRIPCION_ERROR" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetPost">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IDHotel" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IDServicio" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Desde" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="Hasta" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPostResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPostResult" type="tns:ArrayOfGetPostResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGetPostResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GetPostResponse" nillable="true" type="tns:GetPostResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GetPostResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ID_HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_SERVICIO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SERVICIO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FECHA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FACTURADO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_BR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_CARDEX" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_AGENCIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AGENCIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_EMPRESA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EMPRESA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_FORANEO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FORANEO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_MASTER" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MASTER" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_CASA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CUENTACASA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CONTADO_DIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ORIGEN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_ORIGEN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_MONEDA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MONEDA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_DEPARTAMENTO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DEPARTAMENTO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_CENTRO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CENTRO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_CARGO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_AGENCIA_CLIENTE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_EMPRESA_CLIENTE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_USUARIO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="USUARIO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CODIGO_ERROR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESCRIPCION_ERROR" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAllotment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IDHotel" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Desde" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="Hasta" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllotmentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllotmentResult" type="tns:ArrayOfGetAllotmentResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGetAllotmentResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GetAllotmentResponse" nillable="true" type="tns:GetAllotmentResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GetAllotmentResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ID_HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_CONTRATO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_PAQUETE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CONTRATO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESDE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HASTA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_TIPO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TIPO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CUPO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RELEASE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GARANTIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_REGIMEN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="REGIMEN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LUNES" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MARTES" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MIERCOLES" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="JUEVES" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VIERNES" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SABADO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DOMINGO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_AGENCIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AGENCIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CODIGO_ERROR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESCRIPCION_ERROR" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetTicket">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IDTicket" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IDTerminal" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IDEstablecimiento" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Desde" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="Hasta" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTicketResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTicketResult" type="tns:ArrayOfGetTicketResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGetTicketResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GetTicketResponse" nillable="true" type="tns:GetTicketResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GetTicketResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ID_TICKET" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_ESTABLECIMIENTO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ESTABLECIMIENTO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_TERMINAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TERMINAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_USUARIO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="USUARIO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_TURNO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TURNO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_MESA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MESA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_TIPO_CLIENTE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_CLIENTE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CLIENTE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FECHA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TIPO_IMPRESO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HORA_APERTURA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HORA_CIERRE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NUMERO_FACTURA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TOTAL_IMPORTE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PORCENTAJE_DESCUENTO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_IMPUESTO1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPUESTO1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PORCENTAJE_IMPUESTO1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BASE_IMPONIBLE1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_IMPUESTO1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_IMPUESTO2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPUESTO2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PORCENTAJE_IMPUESTO2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BASE_IMPONIBLE2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_IMPUESTO2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_IMPUESTO3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPUESTO3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PORCENTAJE_IMPUESTO3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BASE_IMPONIBLE3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_IMPUESTO3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FACTURA_IMPRESA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CUBIERTOS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_ASOCIADA_A" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OBSERVACIONES" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_USUARIO_BLOQUEA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="USUARIO_BLOQUEA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_USUARIO_COBRO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="USUARIO_COBRO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_MONEDA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MONEDA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESCUENTO_ABSOLUTO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_TARIFA_VIGENTE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TARIFA_VIGENTE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_HOTEL_CLIENTE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HOTEL_CLIENTE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FECHA_GESTION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_COBRO1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="COBRO1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_COBRO1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_COBRO2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="COBRO2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_COBRO2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_COBRO3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="COBRO3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_COBRO3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_COBRO4" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="COBRO4" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPORTE_COBRO4" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_AREA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AREA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CODIGO_ERROR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESCRIPCION_ERROR" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetTicketItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IDTicket" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IDTerminal" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IDEstablecimiento" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Desde" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="Hasta" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTicketItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTicketItemResult" type="tns:ArrayOfGetTicketItemResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGetTicketItemResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GetTicketItemResponse" nillable="true" type="tns:GetTicketItemResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GetTicketItemResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ID_TICKET" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_ESTABLECIMIENTO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_ARTICULO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="REFERENCIA_ARTICULO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESCRIPCION_ARTICULO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TIPO_ARTICULO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CANTIDAD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESCRIPCION_TICKET" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PRECIO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PRECIO_BR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_IMPUESTO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPUESTO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PORCENTAJE_IMPUESTO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_TARIFA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TARIFA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EN_REMOTA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FACTURADO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="POSICION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TEMPERATURA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_PLATO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NOMBRE_PLATO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESCRIPCION_ADICIONAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_MENU" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MENU" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_MODIFICADOR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MODIFICADOR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_CONDIMENTO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CONDIMENTO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_PROMOCION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PROMOCION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TIPOLOGIA_ARTICULO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PORCENTAJE_ALIMENTACION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PORCENTAJE_BEBIDA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PORCENTAJE_VARIOS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_GRUPO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GRUPO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_FAMILIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FAMILIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_SUBFAMILIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SUBFAMILIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CODIGO_ERROR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESCRIPCION_ERROR" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetGuest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IDHuesped" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Desde" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="Hasta" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGuestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGuestResult" type="tns:ArrayOfGetGuestResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGetGuestResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GetGuestResponse" nillable="true" type="tns:GetGuestResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GetGuestResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ID_HUESPED" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="APELLIDO1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="APELLIDO2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NOMBRE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DIRECCION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="POBLACION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CODIGO_POSTAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_PROVINCIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PROVINCIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DNI" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TELEFONO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TELEFONO2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EMAIL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NUMERO_SOCIO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_EMPRESA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EMPRESA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_CARGO_PROFESIONAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CARGO_PROFESIONAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VEHICULO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_HOBBY" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HOBBY" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_CONDICION_PAGO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CONDICION_PAGO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TARJETA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CADUCIDAD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_SEXO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_CIVIL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FECHA_NACIMIENTO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OBSERVACIONES" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PADRE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MADRE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HIJOS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FECHA_EXP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="POBLACION_EXP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_PAIS_EXP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PAIS_EXP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_PROVINCIA_NAC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PROVINCIA_NAC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_PAIS_NAC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PAIS_NAC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="POBLACION_NAC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_TRATAMIENTO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TRATAMIENTO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_IDIOMA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IDIOMA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MAILING" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BAJA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ISO_PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ISO_PAIS_EXP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ISO_PAIS_NAC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CODIGO_ERROR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESCRIPCION_ERROR" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCapacity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IDHotel" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCapacityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCapacityResult" type="tns:ArrayOfGetCapacityResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGetCapacityResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GetCapacityResponse" nillable="true" type="tns:GetCapacityResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GetCapacityResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ID_HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HABITACIONES" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_TIPO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TIPO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PAX" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CODIGO_ERROR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESCRIPCION_ERROR" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetHotel">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IDHotel" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHotelResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetHotelResult" type="tns:ArrayOfGetHotelResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGetHotelResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GetHotelResponse" nillable="true" type="tns:GetHotelResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GetHotelResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ID_HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_CATEGORIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CATEGORIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_MARCA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MARCA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DIRECCION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_POBLACION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="POBLACION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="POSTAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_PROVINCIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PROVINCIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_ZONA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ZONA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TELEFONO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FAX" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TELEFONO_RESERVAS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EMAIL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DIRECTOR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="COMERCIAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="JEFE_RECEPCION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WEB" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NETO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NIF" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ISO_PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CODIGO_ERROR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESCRIPCION_ERROR" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAgency">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IDAgencia" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IDHotel" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Baja" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAgencyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAgencyResult" type="tns:ArrayOfGetAgencyResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGetAgencyResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GetAgencyResponse" nillable="true" type="tns:GetAgencyResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GetAgencyResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ID_AGENCIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NOMBRE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PREFIJO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DIRECCION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="POBLACION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="POSTAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CIF" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TELEFONO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EXTENSION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FAX" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EMAIL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_PROVINCIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PROVINCIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IATA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_AGENCIA_CENTRAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ES_COMERCIAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CENTRAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SUCURSAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="INPLANT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OBSERVACIONES" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RECEPTIVO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TTOO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BAJA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DIRECTOR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GRUPOS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EMPRESAS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CONGRESOS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VENTAS1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VENTAS2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VISITA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SOCIAL_NOMBRE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SOCIAL_DIRECCION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SOCIAL_POBLACION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SOCIAL_POSTAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SOCIAL_CIF" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SOCIAL_TELEFONO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SOCIAL_FAX" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SOCIAL_ID_PROVINCIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SOCIAL_PROVINCIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SOCIAL_ID_PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SOCIAL_PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FACTURAR_A" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="COMISION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="COMI_APLICADA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ATENCION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PROVEEDOR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CONTACTO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ENVIO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ATT1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ATT2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FACTURACION_DIRECCION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FACTURACION_FAX" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FACTURACION_POBLACION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FACTURACION_POSTAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FACTURACION_RAZON" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FACTURACION_TELEFONO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FACTURACION_EMAIL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FACTURACION_ID_PROVINCIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FACTURACION_PROVINCIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FACTURACION_ID_PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FACTURACION_PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="REMESAS_DIRECCION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="REMESAS_FAX" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="REMESAS_POBLACION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="REMESAS_POSTAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="REMESAS_RAZON" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="REMESAS_TELEFONO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="REMESAS_EMAIL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="REMESAS_ID_PROVINCIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="REMESAS_PROVINCIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="REMESAS_ID_PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="REMESAS_PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_POTENCIAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="POTENCIAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_COMERCIAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="COMERCIAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_MERCADO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MERCADO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_FORMA_PAGO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FORMA_PAGO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PASSWORD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="USUARIO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TOTAL_FACTURADO_ANYO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NUMERO_FACTURAS_ANYO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ISO_PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ISO_PAIS_SOCIAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ISO_PAIS_FAC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ISO_PAIS_REM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CODIGO_ERROR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESCRIPCION_ERROR" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCompany">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IDEmpresa" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IDHotel" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Baja" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCompanyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCompanyResult" type="tns:ArrayOfGetCompanyResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGetCompanyResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GetCompanyResponse" nillable="true" type="tns:GetCompanyResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GetCompanyResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ID_EMPRESA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NOMBRE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RAZON_SOCIAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DIRECCION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="POBLACION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="POSTAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CIF" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TELEFONO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EMAIL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FAX" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CONTACTO1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CONTACTO2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CONTACTO3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_PROVINCIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PROVINCIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_FORMA_PAGO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FORMA_PAGO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_SECTOR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SECTOR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OBSERVACIONES" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GENERAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DIRECTOR_COMERCIAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MARKETING" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PERSONAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GRUPOS1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GRUPOS2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESTINOS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_POTENCIAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="POTENCIAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ULTIMA_VISITA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="COMERCIAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BAJA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ES_CENTRAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_CENTRAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CENTRAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FACTURAR_A" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ES_HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FACTURACION_ATT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FACTURACION_DIRECCION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FACTURACION_FAX" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FACTURACION_POBLACION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FACTURACION_POSTAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FACTURACION_RAZON" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FACTURACION_TELEFONO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FACTURACION_EMAIL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FACTURACION_ID_PROVINCIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FACTURACION_PROVINCIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FACTURACION_ID_PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FACTURACION_PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="REMESAS_ATT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="REMESAS_DIRECCION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="REMESAS_FAX" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="REMESAS_POBLACION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="REMESAS_POSTAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="REMESAS_RAZON" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="REMESAS_TELEFONO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="REMESAS_EMAIL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="REMESAS_ID_PROVINCIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="REMESAS_PROVINCIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="REMESAS_ID_PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="REMESAS_PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ENVIO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FISCAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PASSWORD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="USUARIO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TOTAL_FACTURADO_ANYO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NUMERO_FACTURAS_ANYO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ISO_PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ISO_PAIS_FAC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ISO_PAIS_REM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CODIGO_ERROR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESCRIPCION_ERROR" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetNonGuest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IDForaneo" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IDHotel" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Baja" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNonGuestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNonGuestResult" type="tns:ArrayOfGetNonGuestResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGetNonGuestResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GetNonGuestResponse" nillable="true" type="tns:GetNonGuestResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GetNonGuestResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NOMBRE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DIRECCION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="POBLACION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="POSTAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CIF" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_PROVINCIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PROVINCIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EMAIL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TELEFONO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FAX" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CONTACTO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OBSERVACIONES" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BAJA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ESPROPIETARIO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_HABITACION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HABITACION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FECHA_ALTA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FISCAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TIPO_CLIENTE_FACTURA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_CLIENTE_FACTURA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CLIENTE_FACTURA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ISO_PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CODIGO_ERROR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESCRIPCION_ERROR" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetRepresentant">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IDRepresentante" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IDHotel" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Baja" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRepresentantResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRepresentantResult" type="tns:ArrayOfGetRepresentantResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGetRepresentantResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GetRepresentantResponse" nillable="true" type="tns:GetRepresentantResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GetRepresentantResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NOMBRE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DIRECCION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="POBLACION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="POSTAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CIF" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_PROVINCIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PROVINCIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EMAIL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TELEFONO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FAX" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CONTACTO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OBSERVACIONES" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BAJA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FISCAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ISO_PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CODIGO_ERROR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESCRIPCION_ERROR" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetServices">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IDServicio" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IDHotel" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Baja" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetServicesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetServicesResult" type="tns:ArrayOfGetServicesResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGetServicesResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GetServicesResponse" nillable="true" type="tns:GetServicesResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GetServicesResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NOMBRE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_DEPARTAMENTO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DEPARTAMENTO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PRECIO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ALLINCLUSIVE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_FACTURACION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CONCEPTO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ANULADO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_MONEDA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MONEDA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EXTERNO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_FACTURACION_FISCAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CONCEPTO_FISCAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ANTICIPO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_IMPUESTO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMPUESTO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PORCENTAJE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ORDEN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ACUMULADO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESDE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CODIGO_ERROR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESCRIPCION_ERROR" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetRooms">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IDHotel" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRoomsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRoomsResult" type="tns:ArrayOfGetRoomsResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGetRoomsResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GetRoomsResponse" nillable="true" type="tns:GetRoomsResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GetRoomsResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NOMBRE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_TIPO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TIPO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CAMAS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PLAZAS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SUPLEMENTOS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_AREA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PISO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FUERAEXPLOT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RANKING" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ORDEN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_STATUS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="STATUS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BAJA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CUNAS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SUPLETORIAS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FUERA_ESTADISTICA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CODIGO_ERROR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESCRIPCION_ERROR" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetTransfer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IDHotel" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Desde" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="Hasta" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTransferResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTransferResult" type="tns:ArrayOfGetTransferResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGetTransferResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GetTransferResponse" nillable="true" type="tns:GetTransferResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GetTransferResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ID_HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_CARDEX_ORIGEN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_CARDEX_DESTINO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_CARGO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FECHA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_USUARIO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="USUARIO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_AGENCIA_ORIGEN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AGENCIA_ORIGEN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_AGENCIA_DESTINO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AGENCIA_DESTINO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_EMPRESA_ORIGEN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EMPRESA_ORIGEN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_EMPRESA_DESTINO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EMPRESA_DESTINO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_CASA_ORIGEN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CUENTACASA_ORIGEN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_CASA_DESTINO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CUENTACASA_DESTINO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_FORANEO_ORIGEN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FORANEO_ORIGEN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_FORANEO_DESTINO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FORANEO_DESTINO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_MASTER_ORIGEN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MASTER_ORIGEN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_MASTER_DESTINO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MASTER_DESTINO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CODIGO_ERROR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESCRIPCION_ERROR" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetLocks">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IDHotel" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Desde" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="Hasta" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLocksResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLocksResult" type="tns:ArrayOfGetLocksResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGetLocksResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GetLocksResponse" nillable="true" type="tns:GetLocksResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GetLocksResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESDE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HASTA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_MOTIVO_BLOQUEO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MOTIVO_BLOQUEO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_HABITACION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HABITACION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="INACTIVO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OBSERVACIONES" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AFECTA_BOOKING" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CODIGO_ERROR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESCRIPCION_ERROR" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetNightAuditControl">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IDHotel" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Desde" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="Hasta" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNightAuditControlResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNightAuditControlResult" type="tns:ArrayOfGetNightAuditControlResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGetNightAuditControlResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GetNightAuditControlResponse" nillable="true" type="tns:GetNightAuditControlResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GetNightAuditControlResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="FECHA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_TIPO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TIPO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HABITACIONES" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PLAZAS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CODIGO_ERROR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESCRIPCION_ERROR" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetOccupancyHistory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IDHotel" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Desde" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="Hasta" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOccupancyHistoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetOccupancyHistoryResult" type="tns:ArrayOfGetOccupancyHistoryResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGetOccupancyHistoryResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GetOccupancyHistoryResponse" nillable="true" type="tns:GetOccupancyHistoryResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GetOccupancyHistoryResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ID_HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FECHA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OCUPADAS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PERNOCTACIONES" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="USODIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SALIDAS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BLOQUEADAS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESVIOS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PAX_DESVIOS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LIMPIAS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SUCIAS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="REPASO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BLOQUEADAS_BOOKING" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BLOQUEADAS_NOBOOKING" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CODIGO_ERROR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESCRIPCION_ERROR" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetInHouseHistory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IDHotel" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Desde" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="Hasta" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInHouseHistoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetInHouseHistoryResult" type="tns:ArrayOfGetInHouseHistoryResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGetInHouseHistoryResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GetInHouseHistoryResponse" nillable="true" type="tns:GetInHouseHistoryResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GetInHouseHistoryResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="FECHA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_CARDEX" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LLEGADA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SALIDA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PAX" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="USO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_COMPARTIDO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NOCHES" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_REG" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="REGIMEN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_AGENCIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AGENCIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_HABITACION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HABITACION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_TIPO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TIPO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ORDEN_HABITACION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_EMPRESA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EMPRESA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_MASTER" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MASTER" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ES_MASTER" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NENES" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BEBES" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GRATIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ALOJADO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_FOLIO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="APELLIDO1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="APELLIDO2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NOMBRE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OBSERVACIONES" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CHECKIN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CHECKOUT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ALLINCLUSIVE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="USODIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="INVITADO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_PRIMER_SERVICIO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PRIMER_SERVICIO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_ULTIMO_SERVICIO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ULTIMO_SERVICIO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HORA_SALIDA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_SEGMENTO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SEGMENTO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ISO_PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CODIGO_ERROR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESCRIPCION_ERROR" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetTurnasidesHistory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IDHotel" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Desde" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="Hasta" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTurnasidesHistoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTurnasidesHistoryResult" type="tns:ArrayOfGetTurnasidesHistoryResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGetTurnasidesHistoryResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GetTurnasidesHistoryResponse" nillable="true" type="tns:GetTurnasidesHistoryResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GetTurnasidesHistoryResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="FECHA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_CARDEX" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LLEGADA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SALIDA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PAX" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="USO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_COMPARTIDO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NOCHES" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_REG" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="REGIMEN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_AGENCIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AGENCIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_HABITACION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HABITACION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_TIPO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TIPO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ORDEN_HABITACION" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_EMPRESA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EMPRESA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_MASTER" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MASTER" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ES_MASTER" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NENES" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BEBES" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GRATIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ALOJADO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_FOLIO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="APELLIDO1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="APELLIDO2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NOMBRE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OBSERVACIONES" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CHECKIN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CHECKOUT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ALLINCLUSIVE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="USODIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="INVITADO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_PRIMER_SERVICIO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PRIMER_SERVICIO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_ULTIMO_SERVICIO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ULTIMO_SERVICIO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HORA_SALIDA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_SEGMENTO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SEGMENTO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ISO_PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CODIGO_ERROR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESCRIPCION_ERROR" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetPickUpOcup">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IDHotel" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Fecha" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPickUpOcupResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPickUpOcupResult" type="tns:ArrayOfGetPickUpOcupResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGetPickUpOcupResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GetPickUpOcupResponse" nillable="true" type="tns:GetPickUpOcupResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GetPickUpOcupResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ID_HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FECHA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_AGENCIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AGENCIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_TIPOLOGIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TIPOLOGIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_FUERZA_VENTAS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FUERZA_VENTAS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_MERCADO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MERCADO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_EMPRESA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EMPRESA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_SECTOR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SECTOR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LLEGADAS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ESTANCIAS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PAX_LLEGADAS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PAX_ESTANCIAS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_TIPO_REGISTRO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TIPO_REGISTRO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_STATUS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="STATUS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NENES_LLEGADAS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NENES_ESTANCIAS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BEBES_LLEGADAS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BEBES_ESTANCIAS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FECHA_VISUAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ISO_PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CODIGO_ERROR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESCRIPCION_ERROR" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetPickUpProd">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IDHotel" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Fecha" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPickUpProdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPickUpProdResult" type="tns:ArrayOfGetPickUpProdResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGetPickUpProdResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GetPickUpProdResponse" nillable="true" type="tns:GetPickUpProdResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GetPickUpProdResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ID_HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HOTEL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FECHA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_AGENCIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AGENCIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_TIPOLOGIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TIPOLOGIA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_FUERZA_VENTAS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FUERZA_VENTAS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_MERCADO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MERCADO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_EMPRESA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EMPRESA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_SECTOR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SECTOR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PROD_NETA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PROD_BRUTA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_TIPO_REGISTRO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TIPO_REGISTRO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_MONEDA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MONEDA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID_ORIGEN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ORIGEN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FECHA_VISUAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ISO_PAIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CODIGO_ERROR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESCRIPCION_ERROR" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetReservationSoapIn">
+    <wsdl:part name="parameters" element="tns:GetReservation" />
+  </wsdl:message>
+  <wsdl:message name="GetReservationSoapOut">
+    <wsdl:part name="parameters" element="tns:GetReservationResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetReservationItemSoapIn">
+    <wsdl:part name="parameters" element="tns:GetReservationItem" />
+  </wsdl:message>
+  <wsdl:message name="GetReservationItemSoapOut">
+    <wsdl:part name="parameters" element="tns:GetReservationItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetReservationItemPrevSoapIn">
+    <wsdl:part name="parameters" element="tns:GetReservationItemPrev" />
+  </wsdl:message>
+  <wsdl:message name="GetReservationItemPrevSoapOut">
+    <wsdl:part name="parameters" element="tns:GetReservationItemPrevResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGroupSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGroup" />
+  </wsdl:message>
+  <wsdl:message name="GetGroupSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGroupResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCardexSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCardex" />
+  </wsdl:message>
+  <wsdl:message name="GetCardexSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCardexResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCardexItemSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCardexItem" />
+  </wsdl:message>
+  <wsdl:message name="GetCardexItemSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCardexItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCardexPaxSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCardexPax" />
+  </wsdl:message>
+  <wsdl:message name="GetCardexPaxSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCardexPaxResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetInvoiceSoapIn">
+    <wsdl:part name="parameters" element="tns:GetInvoice" />
+  </wsdl:message>
+  <wsdl:message name="GetInvoiceSoapOut">
+    <wsdl:part name="parameters" element="tns:GetInvoiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetInvoiceItemSoapIn">
+    <wsdl:part name="parameters" element="tns:GetInvoiceItem" />
+  </wsdl:message>
+  <wsdl:message name="GetInvoiceItemSoapOut">
+    <wsdl:part name="parameters" element="tns:GetInvoiceItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetInvoiceTaxSoapIn">
+    <wsdl:part name="parameters" element="tns:GetInvoiceTax" />
+  </wsdl:message>
+  <wsdl:message name="GetInvoiceTaxSoapOut">
+    <wsdl:part name="parameters" element="tns:GetInvoiceTaxResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetInvoicePaymentSoapIn">
+    <wsdl:part name="parameters" element="tns:GetInvoicePayment" />
+  </wsdl:message>
+  <wsdl:message name="GetInvoicePaymentSoapOut">
+    <wsdl:part name="parameters" element="tns:GetInvoicePaymentResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCashSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCash" />
+  </wsdl:message>
+  <wsdl:message name="GetCashSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCashResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDepositSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDeposit" />
+  </wsdl:message>
+  <wsdl:message name="GetDepositSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDepositResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPostSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPost" />
+  </wsdl:message>
+  <wsdl:message name="GetPostSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPostResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllotmentSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllotment" />
+  </wsdl:message>
+  <wsdl:message name="GetAllotmentSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllotmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTicketSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTicket" />
+  </wsdl:message>
+  <wsdl:message name="GetTicketSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTicketResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTicketItemSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTicketItem" />
+  </wsdl:message>
+  <wsdl:message name="GetTicketItemSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTicketItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGuestSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGuest" />
+  </wsdl:message>
+  <wsdl:message name="GetGuestSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGuestResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCapacitySoapIn">
+    <wsdl:part name="parameters" element="tns:GetCapacity" />
+  </wsdl:message>
+  <wsdl:message name="GetCapacitySoapOut">
+    <wsdl:part name="parameters" element="tns:GetCapacityResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetHotelSoapIn">
+    <wsdl:part name="parameters" element="tns:GetHotel" />
+  </wsdl:message>
+  <wsdl:message name="GetHotelSoapOut">
+    <wsdl:part name="parameters" element="tns:GetHotelResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAgencySoapIn">
+    <wsdl:part name="parameters" element="tns:GetAgency" />
+  </wsdl:message>
+  <wsdl:message name="GetAgencySoapOut">
+    <wsdl:part name="parameters" element="tns:GetAgencyResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanySoapIn">
+    <wsdl:part name="parameters" element="tns:GetCompany" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanySoapOut">
+    <wsdl:part name="parameters" element="tns:GetCompanyResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNonGuestSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNonGuest" />
+  </wsdl:message>
+  <wsdl:message name="GetNonGuestSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNonGuestResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRepresentantSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRepresentant" />
+  </wsdl:message>
+  <wsdl:message name="GetRepresentantSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRepresentantResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetServicesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetServices" />
+  </wsdl:message>
+  <wsdl:message name="GetServicesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetServicesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRoomsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRooms" />
+  </wsdl:message>
+  <wsdl:message name="GetRoomsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRoomsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTransferSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTransfer" />
+  </wsdl:message>
+  <wsdl:message name="GetTransferSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTransferResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLocksSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLocks" />
+  </wsdl:message>
+  <wsdl:message name="GetLocksSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLocksResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNightAuditControlSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNightAuditControl" />
+  </wsdl:message>
+  <wsdl:message name="GetNightAuditControlSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNightAuditControlResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetOccupancyHistorySoapIn">
+    <wsdl:part name="parameters" element="tns:GetOccupancyHistory" />
+  </wsdl:message>
+  <wsdl:message name="GetOccupancyHistorySoapOut">
+    <wsdl:part name="parameters" element="tns:GetOccupancyHistoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetInHouseHistorySoapIn">
+    <wsdl:part name="parameters" element="tns:GetInHouseHistory" />
+  </wsdl:message>
+  <wsdl:message name="GetInHouseHistorySoapOut">
+    <wsdl:part name="parameters" element="tns:GetInHouseHistoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTurnasidesHistorySoapIn">
+    <wsdl:part name="parameters" element="tns:GetTurnasidesHistory" />
+  </wsdl:message>
+  <wsdl:message name="GetTurnasidesHistorySoapOut">
+    <wsdl:part name="parameters" element="tns:GetTurnasidesHistoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPickUpOcupSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPickUpOcup" />
+  </wsdl:message>
+  <wsdl:message name="GetPickUpOcupSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPickUpOcupResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPickUpProdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPickUpProd" />
+  </wsdl:message>
+  <wsdl:message name="GetPickUpProdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPickUpProdResponse" />
+  </wsdl:message>
+  <wsdl:portType name="DataExtractionSoap">
+    <wsdl:operation name="GetReservation">
+      <wsdl:input message="tns:GetReservationSoapIn" />
+      <wsdl:output message="tns:GetReservationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReservationItem">
+      <wsdl:input message="tns:GetReservationItemSoapIn" />
+      <wsdl:output message="tns:GetReservationItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReservationItemPrev">
+      <wsdl:input message="tns:GetReservationItemPrevSoapIn" />
+      <wsdl:output message="tns:GetReservationItemPrevSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGroup">
+      <wsdl:input message="tns:GetGroupSoapIn" />
+      <wsdl:output message="tns:GetGroupSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCardex">
+      <wsdl:input message="tns:GetCardexSoapIn" />
+      <wsdl:output message="tns:GetCardexSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCardexItem">
+      <wsdl:input message="tns:GetCardexItemSoapIn" />
+      <wsdl:output message="tns:GetCardexItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCardexPax">
+      <wsdl:input message="tns:GetCardexPaxSoapIn" />
+      <wsdl:output message="tns:GetCardexPaxSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInvoice">
+      <wsdl:input message="tns:GetInvoiceSoapIn" />
+      <wsdl:output message="tns:GetInvoiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInvoiceItem">
+      <wsdl:input message="tns:GetInvoiceItemSoapIn" />
+      <wsdl:output message="tns:GetInvoiceItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInvoiceTax">
+      <wsdl:input message="tns:GetInvoiceTaxSoapIn" />
+      <wsdl:output message="tns:GetInvoiceTaxSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInvoicePayment">
+      <wsdl:input message="tns:GetInvoicePaymentSoapIn" />
+      <wsdl:output message="tns:GetInvoicePaymentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCash">
+      <wsdl:input message="tns:GetCashSoapIn" />
+      <wsdl:output message="tns:GetCashSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeposit">
+      <wsdl:input message="tns:GetDepositSoapIn" />
+      <wsdl:output message="tns:GetDepositSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPost">
+      <wsdl:input message="tns:GetPostSoapIn" />
+      <wsdl:output message="tns:GetPostSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllotment">
+      <wsdl:input message="tns:GetAllotmentSoapIn" />
+      <wsdl:output message="tns:GetAllotmentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTicket">
+      <wsdl:input message="tns:GetTicketSoapIn" />
+      <wsdl:output message="tns:GetTicketSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTicketItem">
+      <wsdl:input message="tns:GetTicketItemSoapIn" />
+      <wsdl:output message="tns:GetTicketItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGuest">
+      <wsdl:input message="tns:GetGuestSoapIn" />
+      <wsdl:output message="tns:GetGuestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCapacity">
+      <wsdl:input message="tns:GetCapacitySoapIn" />
+      <wsdl:output message="tns:GetCapacitySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHotel">
+      <wsdl:input message="tns:GetHotelSoapIn" />
+      <wsdl:output message="tns:GetHotelSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAgency">
+      <wsdl:input message="tns:GetAgencySoapIn" />
+      <wsdl:output message="tns:GetAgencySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompany">
+      <wsdl:input message="tns:GetCompanySoapIn" />
+      <wsdl:output message="tns:GetCompanySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNonGuest">
+      <wsdl:input message="tns:GetNonGuestSoapIn" />
+      <wsdl:output message="tns:GetNonGuestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRepresentant">
+      <wsdl:input message="tns:GetRepresentantSoapIn" />
+      <wsdl:output message="tns:GetRepresentantSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServices">
+      <wsdl:input message="tns:GetServicesSoapIn" />
+      <wsdl:output message="tns:GetServicesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRooms">
+      <wsdl:input message="tns:GetRoomsSoapIn" />
+      <wsdl:output message="tns:GetRoomsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTransfer">
+      <wsdl:input message="tns:GetTransferSoapIn" />
+      <wsdl:output message="tns:GetTransferSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLocks">
+      <wsdl:input message="tns:GetLocksSoapIn" />
+      <wsdl:output message="tns:GetLocksSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNightAuditControl">
+      <wsdl:input message="tns:GetNightAuditControlSoapIn" />
+      <wsdl:output message="tns:GetNightAuditControlSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOccupancyHistory">
+      <wsdl:input message="tns:GetOccupancyHistorySoapIn" />
+      <wsdl:output message="tns:GetOccupancyHistorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInHouseHistory">
+      <wsdl:input message="tns:GetInHouseHistorySoapIn" />
+      <wsdl:output message="tns:GetInHouseHistorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTurnasidesHistory">
+      <wsdl:input message="tns:GetTurnasidesHistorySoapIn" />
+      <wsdl:output message="tns:GetTurnasidesHistorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPickUpOcup">
+      <wsdl:input message="tns:GetPickUpOcupSoapIn" />
+      <wsdl:output message="tns:GetPickUpOcupSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPickUpProd">
+      <wsdl:input message="tns:GetPickUpProdSoapIn" />
+      <wsdl:output message="tns:GetPickUpProdSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DataExtractionSoap" type="tns:DataExtractionSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetReservation">
+      <soap:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetReservation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReservationItem">
+      <soap:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetReservationItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReservationItemPrev">
+      <soap:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetReservationItemPrev" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGroup">
+      <soap:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCardex">
+      <soap:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetCardex" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCardexItem">
+      <soap:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetCardexItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCardexPax">
+      <soap:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetCardexPax" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInvoice">
+      <soap:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetInvoice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInvoiceItem">
+      <soap:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetInvoiceItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInvoiceTax">
+      <soap:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetInvoiceTax" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInvoicePayment">
+      <soap:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetInvoicePayment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCash">
+      <soap:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetCash" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeposit">
+      <soap:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetDeposit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPost">
+      <soap:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetPost" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllotment">
+      <soap:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetAllotment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTicket">
+      <soap:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetTicket" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTicketItem">
+      <soap:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetTicketItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGuest">
+      <soap:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetGuest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCapacity">
+      <soap:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetCapacity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHotel">
+      <soap:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetHotel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAgency">
+      <soap:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetAgency" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompany">
+      <soap:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetCompany" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNonGuest">
+      <soap:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetNonGuest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRepresentant">
+      <soap:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetRepresentant" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServices">
+      <soap:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetServices" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRooms">
+      <soap:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetRooms" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTransfer">
+      <soap:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetTransfer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocks">
+      <soap:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetLocks" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNightAuditControl">
+      <soap:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetNightAuditControl" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOccupancyHistory">
+      <soap:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetOccupancyHistory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInHouseHistory">
+      <soap:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetInHouseHistory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTurnasidesHistory">
+      <soap:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetTurnasidesHistory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPickUpOcup">
+      <soap:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetPickUpOcup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPickUpProd">
+      <soap:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetPickUpProd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DataExtractionSoap12" type="tns:DataExtractionSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetReservation">
+      <soap12:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetReservation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReservationItem">
+      <soap12:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetReservationItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReservationItemPrev">
+      <soap12:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetReservationItemPrev" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGroup">
+      <soap12:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetGroup" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCardex">
+      <soap12:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetCardex" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCardexItem">
+      <soap12:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetCardexItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCardexPax">
+      <soap12:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetCardexPax" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInvoice">
+      <soap12:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetInvoice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInvoiceItem">
+      <soap12:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetInvoiceItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInvoiceTax">
+      <soap12:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetInvoiceTax" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInvoicePayment">
+      <soap12:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetInvoicePayment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCash">
+      <soap12:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetCash" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeposit">
+      <soap12:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetDeposit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPost">
+      <soap12:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetPost" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllotment">
+      <soap12:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetAllotment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTicket">
+      <soap12:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetTicket" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTicketItem">
+      <soap12:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetTicketItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGuest">
+      <soap12:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetGuest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCapacity">
+      <soap12:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetCapacity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHotel">
+      <soap12:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetHotel" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAgency">
+      <soap12:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetAgency" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompany">
+      <soap12:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetCompany" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNonGuest">
+      <soap12:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetNonGuest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRepresentant">
+      <soap12:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetRepresentant" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServices">
+      <soap12:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetServices" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRooms">
+      <soap12:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetRooms" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTransfer">
+      <soap12:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetTransfer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocks">
+      <soap12:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetLocks" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNightAuditControl">
+      <soap12:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetNightAuditControl" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOccupancyHistory">
+      <soap12:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetOccupancyHistory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInHouseHistory">
+      <soap12:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetInHouseHistory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTurnasidesHistory">
+      <soap12:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetTurnasidesHistory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPickUpOcup">
+      <soap12:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetPickUpOcup" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPickUpProd">
+      <soap12:operation soapAction="http://www.prestigecentral.com/DataExtraction/GetPickUpProd" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DataExtraction">
+    <wsdl:port name="DataExtractionSoap" binding="tns:DataExtractionSoap">
+      <soap:address location="http://support.cloudhospitality.es/exportaciondatos/service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="DataExtractionSoap12" binding="tns:DataExtractionSoap12">
+      <soap12:address location="http://support.cloudhospitality.es/exportaciondatos/service.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

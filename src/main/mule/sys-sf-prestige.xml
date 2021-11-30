@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns:tableau-specialist="http://www.mulesoft.org/schema/mule/tableau-specialist" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:salesforce="http://www.mulesoft.org/schema/mule/salesforce" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:wsc="http://www.mulesoft.org/schema/mule/wsc" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:apikit="http://www.mulesoft.org/schema/mule/mule-apikit" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/mule-apikit http://www.mulesoft.org/schema/mule/mule-apikit/current/mule-apikit.xsd 
+http://www.mulesoft.org/schema/mule/wsc http://www.mulesoft.org/schema/mule/wsc/current/mule-wsc.xsd
+http://www.mulesoft.org/schema/mule/salesforce http://www.mulesoft.org/schema/mule/salesforce/current/mule-salesforce.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/tableau-specialist http://www.mulesoft.org/schema/mule/tableau-specialist/current/mule-tableau-specialist.xsd">
+    <http:listener-config name="sys-sf-prestige-httpListenerConfig">
+        <http:listener-connection host="0.0.0.0" port="8081"/>
+    </http:listener-config>
+    <apikit:config name="sys-sf-prestige-config" api="sys-sf-prestige.raml" outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus" />
+    <wsc:config name="Web_Service_Consumer_Config" doc:name="Web Service Consumer Config" doc:id="5b15a366-1134-4bbd-bced-05f4079f29f9" >
+		<wsc:connection wsdlLocation="prestiges.wsdl" service="DataExtraction" port="DataExtractionSoap" address="http://support.cloudhospitality.es/exportaciondatos/service.asmx"/>
+	</wsc:config>
+	<salesforce:sfdc-config name="Salesforce_Config" doc:name="Salesforce Config" doc:id="35dce1c3-8dd9-41a6-8d3f-ce20f04634a6" >
+		<salesforce:basic-connection username="marketing@leadclic.com.ar.dev" password="SF4Rh0t3l3s@2021" securityToken="2v43QKRXpMQFEWDOsiPHdv4de" url="https://test.salesforce.com/services/Soap/u/48.0/" />
+	</salesforce:sfdc-config>
+	<flow name="sys-sf-prestige-main">
+        <http:listener config-ref="sys-sf-prestige-httpListenerConfig" path="/api/*">
+            <http:response statusCode="#[vars.httpStatus default 200]">
+                <http:headers>#[vars.outboundHeaders default {}]</http:headers>
+            </http:response>
+            <http:error-response statusCode="#[vars.httpStatus default 500]">
+                <http:body>#[payload]</http:body>
+                <http:headers>#[vars.outboundHeaders default {}]</http:headers>
+            </http:error-response>
+        </http:listener>
+        <apikit:router config-ref="sys-sf-prestige-config" />
+        <error-handler>
+            <on-error-propagate type="APIKIT:BAD_REQUEST">
+                <ee:transform xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+                    <ee:message>
+                        <ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+{message: "Bad request"}]]></ee:set-payload>
+                    </ee:message>
+                    <ee:variables>
+                        <ee:set-variable variableName="httpStatus">400</ee:set-variable>
+                    </ee:variables>
+                </ee:transform>
+            </on-error-propagate>
+            <on-error-propagate type="APIKIT:NOT_FOUND">
+                <ee:transform xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+                    <ee:message>
+                        <ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+{message: "Resource not found"}]]></ee:set-payload>
+                    </ee:message>
+                    <ee:variables>
+                        <ee:set-variable variableName="httpStatus">404</ee:set-variable>
+                    </ee:variables>
+                </ee:transform>
+            </on-error-propagate>
+            <on-error-propagate type="APIKIT:METHOD_NOT_ALLOWED">
+                <ee:transform xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+                    <ee:message>
+                        <ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+{message: "Method not allowed"}]]></ee:set-payload>
+                    </ee:message>
+                    <ee:variables>
+                        <ee:set-variable variableName="httpStatus">405</ee:set-variable>
+                    </ee:variables>
+                </ee:transform>
+            </on-error-propagate>
+            <on-error-propagate type="APIKIT:NOT_ACCEPTABLE">
+                <ee:transform xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+                    <ee:message>
+                        <ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+{message: "Not acceptable"}]]></ee:set-payload>
+                    </ee:message>
+                    <ee:variables>
+                        <ee:set-variable variableName="httpStatus">406</ee:set-variable>
+                    </ee:variables>
+                </ee:transform>
+            </on-error-propagate>
+            <on-error-propagate type="APIKIT:UNSUPPORTED_MEDIA_TYPE">
+                <ee:transform xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+                    <ee:message>
+                        <ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+{message: "Unsupported media type"}]]></ee:set-payload>
+                    </ee:message>
+                    <ee:variables>
+                        <ee:set-variable variableName="httpStatus">415</ee:set-variable>
+                    </ee:variables>
+                </ee:transform>
+            </on-error-propagate>
+            <on-error-propagate type="APIKIT:NOT_IMPLEMENTED">
+                <ee:transform xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+                    <ee:message>
+                        <ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+{message: "Not Implemented"}]]></ee:set-payload>
+                    </ee:message>
+                    <ee:variables>
+                        <ee:set-variable variableName="httpStatus">501</ee:set-variable>
+                    </ee:variables>
+                </ee:transform>
+            </on-error-propagate>
+        </error-handler>
+    </flow>
+    <flow name="sys-sf-prestige-console">
+        <http:listener config-ref="sys-sf-prestige-httpListenerConfig" path="/console/*">
+            <http:response statusCode="#[vars.httpStatus default 200]">
+                <http:headers>#[vars.outboundHeaders default {}]</http:headers>
+            </http:response>
+            <http:error-response statusCode="#[vars.httpStatus default 500]">
+                <http:body>#[payload]</http:body>
+                <http:headers>#[vars.outboundHeaders default {}]</http:headers>
+            </http:error-response>
+        </http:listener>
+        <apikit:console config-ref="sys-sf-prestige-config" />
+        <error-handler>
+            <on-error-propagate type="APIKIT:NOT_FOUND">
+            </on-error-propagate>
+        </error-handler>
+    </flow>
+	<flow name="post:\cuenta\:sys-sf-prestige-config">
+        <logger level="INFO" message="Log entrada sys-sf-prestige create cuenta: #[payload]" />
+		<ee:transform doc:name="Transform Message" doc:id="3d22f0b7-d832-41ed-bd1c-df5134eb85a9" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/xml
+ns ns0 http://www.prestigecentral.com/DataExtraction
+---
+{
+	ns0#GetGuest: {
+		ns0#IDHuesped: "287766" as Number ,
+		ns0#Desde: "2021-01-01" as Date ,
+		ns0#Hasta: "2021-01-21" as Date
+	}
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="a08f8f11-1776-44da-9c3d-85d0fc51526f" message="Log entrada web service Prestige create cuenta: #[payload]"/>
+		<wsc:consume doc:name="Consume" doc:id="2617744c-3db9-4328-b47a-101fc2b8dcf8" config-ref="Web_Service_Consumer_Config" operation="GetGuest" />
+		<logger level="INFO" doc:name="Logger" doc:id="cdcd02e6-fc52-473a-b3a7-bd6ce6d43818" message="Log salida web service Prestige create cuenta: #[payload]"/>
+		<ee:transform doc:name="Transform Message" doc:id="62a08737-341f-4caa-ac6d-135b8ebcd4c8" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/java
+ns ns0 http://www.prestigecentral.com/DataExtraction
+---
+payload.body.ns0#GetGuestResponse.ns0#GetGuestResult.*ns0#GetGuestResponse map ( getGuestResponse , indexOfGetGuestResponse ) -> {
+	LastName: (getGuestResponse.ns0#APELLIDO1 default "") ++ " " ++ (getGuestResponse.ns0#APELLIDO2 default ""),
+	FirstName: getGuestResponse.ns0#NOMBRE,
+	Salutation: getGuestResponse.ns0#TRATAMIENTO,
+	BillingStreet: getGuestResponse.ns0#DIRECCION,
+	BillingCity: getGuestResponse.ns0#POBLACION,
+	BillingState: getGuestResponse.ns0#PROVINCIA,
+	BillingPostalCode: getGuestResponse.ns0#CODIGO_POSTAL,
+	BillingCountry: getGuestResponse.ns0#PAIS,
+	Phone: getGuestResponse.ns0#TELEFONO,
+	PersonOtherPhone: getGuestResponse.ns0#TELEFONO2,
+	PersonBirthdate: "2021-11-24" as Date,
+	PersonHasOptedOutOfEmail: if (getGuestResponse.ns0#MAILING == '1') true else false,
+	CIF__c: getGuestResponse.ns0#DNI,
+	ID_Prestige__c: getGuestResponse.ns0#ID_HUESPED,
+	PersonEmail: getGuestResponse.ns0#EMAIL,
+	Hotel__c: getGuestResponse.ns0#HOTEL,
+	Language__pc: getGuestResponse.ns0#IDIOMA,
+	Gender__pc: if(getGuestResponse.ns0#ID_SEXO == '0') "Male" else "Female"
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="3459376b-c5be-41a7-9095-f38499b9decc" message="Log entrada SF Hoteles AR create cuenta: #[payload]"/>
+		<salesforce:upsert doc:name="Upsert" doc:id="2715099c-8b9d-48d3-b3cd-2940a860abf5" config-ref="Salesforce_Config" objectType="Account" externalIdFieldName="Id"/>
+		<ee:transform doc:name="Transform Message" doc:id="c9b22d4a-0a94-4ffd-ae7c-5e499de3c6af" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="15c6431e-2d4e-4b0c-8434-3e8bfb8a3c21" message="Log salida SF Hoteles AR create cuenta: #[payload]"/>
+    </flow>
+</mule>
